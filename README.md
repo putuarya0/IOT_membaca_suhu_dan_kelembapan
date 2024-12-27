@@ -1,4 +1,5 @@
 #Monitoring Suhu dan Kelembaban dengan DHT11 dan LCD
+
 Deskripsi Proyek
 
 Proyek ini adalah implementasi sederhana untuk memonitor suhu dan kelembaban menggunakan sensor DHT11 yang ditampilkan pada LCD 16x2 dengan modul I2C. Program ini membaca data suhu dan kelembaban dari sensor, kemudian menampilkannya pada layar LCD secara real-time.
