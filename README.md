@@ -1,41 +1,114 @@
-Proyek ini menggunakan sensor DHT11 untuk membaca suhu dan kelembapan lingkungan, dan menampilkan data tersebut pada layar LCD 16x2 menggunakan protokol I2C. Program ini berjalan pada mikrokontroler seperti ESP8266 atau Arduino untuk menghubungkan sensor dan LCD, serta menampilkan informasi suhu dan kelembaban secara real-time.
+#Monitoring Suhu dan Kelembaban dengan DHT11 dan LCD
+Deskripsi Proyek
+
+Proyek ini adalah implementasi sederhana untuk memonitor suhu dan kelembaban menggunakan sensor DHT11 yang ditampilkan pada LCD 16x2 dengan modul I2C. Program ini membaca data suhu dan kelembaban dari sensor, kemudian menampilkannya pada layar LCD secara real-time.
+
+Peralatan yang Dibutuhkan
+
+Microcontroller: ESP8266 (NodeMCU) atau yang kompatibel
+
+Sensor DHT11: Untuk membaca suhu dan kelembaban
+
+LCD 16x2 dengan modul I2C: Untuk menampilkan data
+
+Kabel jumper dan breadboard
+
+Software Arduino IDE
 
 Fitur Utama
-Membaca suhu dari sensor DHT11.
-Membaca kelembaban dari sensor DHT11.
-Menampilkan suhu dan kelembaban pada LCD 16x2 dengan antarmuka I2C.
-Menampilkan pesan kesalahan jika sensor gagal membaca data.
-Komponen yang Digunakan
-Sensor DHT11: Sensor suhu dan kelembaban.
-Mikrokontroler (ESP8266/Arduino): Mikrokontroler yang digunakan untuk membaca data dari sensor dan menghubungkan ke LCD.
-LCD 16x2 dengan I2C: Layar LCD yang menampilkan hasil pembacaan suhu dan kelembaban.
-Library:
-Wire.h: Untuk komunikasi I2C.
-LiquidCrystal_PCF8574.h: Untuk kontrol LCD menggunakan modul I2C.
-DHT.h: Untuk mengontrol sensor DHT11.
-Cara Menjalankan
-Prasyarat
-Pastikan Anda memiliki perangkat Arduino atau ESP8266/ESP32 dan sudah terhubung dengan komputer.
-Pastikan Anda memiliki sensor DHT11 dan LCD 16x2 dengan I2C.
-Pastikan Arduino IDE sudah terpasang dan terkonfigurasi dengan benar.
-Langkah-langkah Instalasi dan Pengaturan:
-Pasang Sensor DHT11 dan LCD 16x2:
 
-Hubungkan pin VCC dan GND dari sensor DHT11 ke 5V dan GND pada mikrokontroler.
-Hubungkan pin DATA dari sensor DHT11 ke D4 (GPIO2) pada mikrokontroler.
-Hubungkan LCD 16x2 dengan I2C ke SDA dan SCL pada mikrokontroler sesuai dengan pin yang digunakan (biasanya D1 untuk SDA dan D2 untuk SCL pada ESP8266).
-Install Library yang Dibutuhkan:
+Membaca Data Suhu dan Kelembaban
 
-Buka Arduino IDE.
-Pergi ke Sketch > Include Library > Manage Libraries.
-Cari dan install DHT sensor library oleh Adafruit.
-Cari dan install LiquidCrystal_I2C library (PCF8574).
-Program Mikrokontroler:
+Suhu dalam derajat Celsius (C).
 
-Buka file .ino pada Arduino IDE.
-Pilih board dan port yang sesuai di Tools > Board dan Tools > Port.
-Upload kode program ke mikrokontroler.
-Menjalankan Program:
+Kelembaban dalam persentase (%).
 
-Setelah program di-upload, mikrokontroler akan mulai membaca data suhu dan kelembaban dari sensor DHT11 setiap 2 detik.
-Data akan ditampilkan pada LCD 16x2.
+Menampilkan Data pada LCD
+
+Baris pertama: Informasi suhu.
+
+Baris kedua: Informasi kelembaban.
+
+Validasi Pembacaan Data
+
+Jika pembacaan data dari sensor gagal, pesan error akan ditampilkan pada LCD.
+
+Cara Kerja
+
+Inisialisasi
+
+Sensor DHT11 dan LCD 16x2 diinisialisasi di fungsi setup().
+
+LCD akan menampilkan pesan "Suhu & Kelembaban" saat program dimulai.
+
+Looping Pembacaan Data
+
+Sensor DHT11 membaca suhu dan kelembaban.
+
+Jika pembacaan berhasil, data ditampilkan di LCD.
+
+Jika pembacaan gagal, pesan error ditampilkan di LCD.
+
+Delay
+
+Pembacaan data diperbarui setiap 2 detik.
+
+Cara Menggunakan
+
+Koneksi Hardware:
+
+Hubungkan sensor DHT11 ke pin D4 (GPIO2) pada microcontroller.
+
+Sambungkan LCD dengan modul I2C ke jalur I2C microcontroller (SDA dan SCL).
+
+Pastikan koneksi daya dan ground terhubung dengan benar.
+
+Upload Program:
+
+Instal library berikut di Arduino IDE:
+
+DHT Sensor Library
+
+LiquidCrystal_PCF8574
+
+Upload kode program ke microcontroller.
+
+Monitor Data:
+
+Nyalakan microcontroller.
+
+Periksa data suhu dan kelembaban yang ditampilkan pada LCD.
+
+Rumus yang Digunakan
+
+Suhu (C): Dibaca langsung dari sensor DHT11.
+
+Kelembaban (%): Dibaca langsung dari sensor DHT11.
+
+Troubleshooting
+
+LCD Tidak Menyala:
+
+Periksa koneksi daya dan ground.
+
+Pastikan alamat I2C sesuai dengan perangkat (default: 0x27).
+
+Data Tidak Ditampilkan:
+
+Periksa koneksi sensor DHT11.
+
+Pastikan pin data sensor terhubung ke pin yang benar pada microcontroller.
+
+Pesan "Error reading data":
+
+Pastikan sensor DHT11 berfungsi dengan baik.
+
+Cek suhu dan kelembaban lingkungan, pastikan berada dalam rentang yang didukung sensor.
+
+Saran Pengembangan
+
+Tambahkan pembacaan suhu dalam Fahrenheit.
+
+Simpan data suhu dan kelembaban ke kartu SD atau kirim ke server melalui Wi-Fi.
+
+Tambahkan alarm jika suhu atau kelembaban melebihi batas tertentu.
